@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: sre-lab
+  namespace: argocd
+spec:
+  description: Three-day GitOps lab
+  sourceRepos:
+    - https://github.com/VIoletEve/sre-gitops.git
+  destinations:
+    - namespace: sre-dev
+      server: https://kubernetes.default.svc
+    - namespace: sre-prod
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+    - group: apps
+      kind: Deployment
+    - group: ""
+      kind: Service

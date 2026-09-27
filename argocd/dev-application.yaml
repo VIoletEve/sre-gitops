@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sre-dev
+  namespace: argocd
+spec:
+  project: sre-lab
+  source:
+    repoURL: https://github.com/VIoletEve/sre-gitops.git
+    targetRevision: main
+    path: day1
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sre-dev
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 3
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 30s
