@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: nginx
-  tag: "1.28.0-alpine"
+  tag: "1.29.0-alpine"
   pullPolicy: IfNotPresent
 imagePullSecrets: []
 service:
