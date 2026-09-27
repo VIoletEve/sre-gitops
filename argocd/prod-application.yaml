@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sre-dev
+  name: sre-prod
   namespace: argocd
 spec:
   project: sre-lab
@@ -11,18 +11,12 @@ spec:
     path: charts/sre-demo
     helm:
       valueFiles:
-        - ../../environments/dev-values.yaml
+        - ../../environments/prod-values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: sre-dev
+    namespace: sre-prod
   syncPolicy:
     automated:
-      enabled: true
+      enabled: false
       prune: true
-      selfHeal: true
-    retry:
-      limit: 3
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 30s
+      selfHeal: false
