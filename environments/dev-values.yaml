@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
- repository: 10.0.0.103/sre-demo/web
+  repository: 10.0.0.103/sre-demo/web
   tag: build-3
   pullPolicy: IfNotPresent
 imagePullSecrets: []
