@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
-  repository: nginx
-  tag: "1.28.0-alpine"
+ repository: 10.0.0.103/sre-demo/web
+  tag: build-3
   pullPolicy: IfNotPresent
 imagePullSecrets: []
 service:
